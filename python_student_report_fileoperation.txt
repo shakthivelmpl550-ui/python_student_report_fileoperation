@@ -1,0 +1,42 @@
+import csv
+
+       def calculate_grade(avg):
+  if avg >= 90:
+        return 'A'
+ elif avg >= 75:
+        return 'B'
+elif avg >= 50:
+        return 'C'
+else:
+       return 'Fail'
+
+       with open('students.csv', mode='w', newline='') as file:
+       writer = csv.writer(file)
+
+       writer. writerow(['Name', 'Roll No', 'Maths', 'Science', 'English'])
+
+      writer. writerow(['Arun', 1, 85, 90, 88])
+      writer. writerow(['Priya', 2, 78, 82, 80])
+      writer.  writerow(['Rahul', 3, 45, 50, 40])
+
+     print("Student Report\n")
+
+     with open('students.csv', mode='r') as file:
+     reader = csv.reader(file)
+     next(reader) # Skip header
+
+     for row in reader:
+     name, roll, m1, m2, m3 = row
+     m1, m2, m3 = int(m1), int(m2), int(m3)
+
+     total = m1 + m2 + m3
+     average = total / 3
+     grade = calculate_grade(average)
+
+     print(f"Name: {name}")
+     print(f"Roll No: {roll}")
+     print(f"Total Marks: {total}")
+     print(f"Average: {average:.2f}")
+  print(f"Grade: {grade}")
+  print("-" * 30)
+
